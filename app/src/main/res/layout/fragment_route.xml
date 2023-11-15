@@ -6,6 +6,21 @@
     android:background="@color/lavender"
     tools:context=".RouteFragment">
 
+    <TextureView
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Route"
+        android:textColor="@color/lavender"
+        android:textSize="28sp"
+        android:id="@+id/title"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/lavender_border"
+        android:gravity="center_vertical|center_horizontal">
+    </TextureView>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></GridLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
