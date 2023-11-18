@@ -17,19 +17,20 @@ public class RouteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_route, container, false);
         tramCard = view.findViewById(R.id.tramCard);
-        tramCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navigateToAllRouteFragment();
-            }
-        });
+        if (tramCard != null) {
+            tramCard.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (getActivity() != null) {
+                        AllRouteFragment allRouteFragment = new AllRouteFragment();
+                        getParentFragmentManager().beginTransaction()
+                                .replace(R.id.frame_layout, allRouteFragment)
+                                .addToBackStack(null)
+                                .commit();
+                    }
+                }
+            });
+        }
         return view;
-    }
-    private void navigateToAllRouteFragment() {
-        AllRouteFragment allRoutesFragment = new AllRouteFragment();
-        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-        transaction.replace(R.id.tram_route, allRoutesFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 }

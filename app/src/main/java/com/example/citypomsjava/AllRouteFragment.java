@@ -10,10 +10,8 @@ import android.view.ViewGroup;
 
 public class AllRouteFragment extends Fragment {
 
-
     public AllRouteFragment() {
     }
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
