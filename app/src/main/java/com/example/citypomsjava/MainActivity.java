@@ -1,5 +1,7 @@
 package com.example.citypomsjava;
+import com.example.citypomsjava.RouteFragment;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -8,6 +10,7 @@ import com.example.citypomsjava.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
     ActivityMainBinding binding;
 
     @Override
