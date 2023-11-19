@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "154843710555",
+    "project_id": "citypomsjava-realtimedb",
+    "storage_bucket": "citypomsjava-realtimedb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154843710555:android:1d5e985d9db99c3b99ab7e",
+        "android_client_info": {
+          "package_name": "com.example.citypomsjava"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeabp2ni_57BFkG4cJm1PFOlnkSWJBvAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
