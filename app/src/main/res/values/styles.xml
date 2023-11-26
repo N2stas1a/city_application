@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/lavender</item>
+        <item name="colorPrimaryDark">@color/white</item>
+    </style>
+
+    <style name="TransportButton">
+            <item name="android:layout_width">250dp</item>
+            <item name="android:layout_height">20dp</item>
+            <item name="android:textSize">16sp</item>
+            <item name="android:gravity">center</item>
+            <item name="android:padding">8dp</item>
+            <item name ="android:background">@color/lavender</item>
+            <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextApp">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

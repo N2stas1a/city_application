@@ -1,17 +1,220 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- res/layout/fragment_all_routes.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/lavender">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".allBusFragment">
 
+    <FrameLayout
+        android:id="@+id/busFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tramCard"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            android:layout_gravity="left|top"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="2dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_tram_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tram"
+                    android:textAlignment="center"
+                    android:textColor="@color/lavender"
+                    style="@style/TextApp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/busCard"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            android:layout_gravity="top|center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="2dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="center_vertical|center_horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_directions_bus_24"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bus"
+                    android:textColor="@color/lavender"
+                    android:textAlignment="center"
+                    style="@style/TextApp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/subwayCard"
+            android:layout_width="110dp"
+            android:layout_height="90dp"
+            android:layout_gravity="right|top"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="2dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_directions_transit_subway_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Subway"
+                    android:textAlignment="center"
+                    android:textColor="@color/lavender"
+                    style="@style/TextApp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:text="@string/bus"
-        android:textColor="@color/lavender"
-        android:textColorHighlight="@color/white" />
+        android:layout_height="match_parent">
 
-</LinearLayout>
+        <GridLayout
+            android:id="@+id/grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="160dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="2dp"
+            android:columnCount="4"
+            android:rowCount="20">
+            <Button
+                android:id="@+id/transportButton1"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton2"
+                android:text="2"
+                style="@style/TransportButton"/>
+
+            <Button
+                android:id="@+id/transportButton3"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton4"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton5"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton6"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton7"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton8"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton9"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton10"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton11"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton12"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton13"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton14"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton15"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton16"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton17"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton18"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton19"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton20"
+                android:text="1"
+                style="@style/TransportButton"/>
+            <Button
+                android:id="@+id/transportButton21"
+                android:text="1"
+                style="@style/TransportButton"/>
+        </GridLayout>
+    </FrameLayout>
+
+
+</RelativeLayout>

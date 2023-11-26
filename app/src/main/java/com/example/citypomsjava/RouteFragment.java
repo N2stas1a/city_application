@@ -27,7 +27,7 @@ public class RouteFragment extends Fragment {
                     if (getActivity() != null) {
                         AllRouteFragment allRouteFragment = new AllRouteFragment();
                         getParentFragmentManager().beginTransaction()
-                                .replace(R.id.frame_layout, allRouteFragment)
+                                .replace(R.id.routeFragment, allRouteFragment)
                                 .addToBackStack(null)
                                 .commit();
                     }
@@ -40,7 +40,7 @@ public class RouteFragment extends Fragment {
                         if (getActivity() != null) {
                             allSubwayFragment allSubwayFragment = new allSubwayFragment();
                             getParentFragmentManager().beginTransaction()
-                                    .replace(R.id.frame_layout, allSubwayFragment)
+                                    .replace(R.id.routeFragment, allSubwayFragment)
                                     .addToBackStack(null)
                                     .commit();
                         }
@@ -51,9 +51,9 @@ public class RouteFragment extends Fragment {
                         @Override
                         public void onClick(View view) {
                             if (getActivity() != null) {
-                                allSubwayFragment allSubwayFragment = new allSubwayFragment();
+                                allSubwayFragment allBusFragment = new allSubwayFragment();
                                 getParentFragmentManager().beginTransaction()
-                                        .replace(R.id.frame_layout, allSubwayFragment)
+                                        .replace(R.id.routeFragment, allBusFragment)
                                         .addToBackStack(null)
                                         .commit();
                             }
