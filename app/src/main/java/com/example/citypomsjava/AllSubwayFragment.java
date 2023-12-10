@@ -40,7 +40,6 @@ public class AllSubwayFragment extends Fragment {
         binding = FragmentAllSubwayBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
         dbManager = new DBManager(requireContext());
         dbManager.open();
 
@@ -64,11 +63,11 @@ public class AllSubwayFragment extends Fragment {
         Cursor cursor = dbManager.fetch_trams();
 
         final String[] from = new String[]{"_id", DatabaseHelper.TRAM_NUMBER};
-        final int[] to = new int[]{R.id.id, R.id.title};
+        final int[] to = new int[]{R.id.id_subways, R.id.title_subways};
 
         adapter = new SimpleCursorAdapter(
                 requireContext(),
-                R.layout.list_item,
+                R.layout.list_item_subways,
                 cursor,
                 from,
                 to,
@@ -84,8 +83,8 @@ public class AllSubwayFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
-                TextView idTextView = (TextView) view.findViewById(R.id.id);
-                TextView titleTextView = (TextView) view.findViewById(R.id.title);
+                TextView idTextView = (TextView) view.findViewById(R.id.id_subways);
+                TextView titleTextView = (TextView) view.findViewById(R.id.title_subways);
 
                 String id = idTextView.getText().toString();
                 String title = titleTextView.getText().toString();

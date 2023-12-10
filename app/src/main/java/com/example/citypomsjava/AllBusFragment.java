@@ -64,11 +64,11 @@ public class AllBusFragment extends Fragment {
         Cursor cursor = dbManager.fetch_trams();
 
         final String[] from = new String[] {"_id", DatabaseHelper.TRAM_NUMBER};
-        final int[] to = new int[] { R.id.id, R.id.title};
+        final int[] to = new int[] { R.id.id_buses, R.id.title_buses};
 
         adapter = new SimpleCursorAdapter(
                 requireContext(),
-                R.layout.list_item,
+                R.layout.list_item_buses,
                 cursor,
                 from,
                 to,
@@ -84,8 +84,8 @@ public class AllBusFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
-                TextView idTextView = (TextView) view.findViewById(R.id.id);
-                TextView titleTextView = (TextView) view.findViewById(R.id.title);
+                TextView idTextView = (TextView) view.findViewById(R.id.id_buses);
+                TextView titleTextView = (TextView) view.findViewById(R.id.title_buses);
 
                 String id = idTextView.getText().toString();
                 String title = titleTextView.getText().toString();

@@ -33,8 +33,8 @@ public class RouteFragment extends Fragment {
                     }
                 }
             });
-            if (busCard != null) {
-                busCard.setOnClickListener(new View.OnClickListener() {
+            if (subwayCard != null) {
+                subwayCard.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (getActivity() != null) {
@@ -46,8 +46,8 @@ public class RouteFragment extends Fragment {
                         }
                     }
                 });
-                if (subwayCard != null) {
-                    subwayCard.setOnClickListener(new View.OnClickListener() {
+                if (busCard != null) {
+                    busCard.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             if (getActivity() != null) {
