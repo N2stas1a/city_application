@@ -69,7 +69,21 @@ public class AllRouteFragment extends Fragment {
         listView.setAdapter(adapter);
 
         adapter.changeCursor(cursor);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
+                TextView idTextView = (TextView) view.findViewById(R.id.id);
+                TextView titleTextView = (TextView) view.findViewById(R.id.title);
 
+                String id = idTextView.getText().toString();
+                String title = titleTextView.getText().toString();
+
+                Intent modify_intent = new Intent(requireContext(), StopsActivity.class);
+
+                startActivity(modify_intent);
+                modify_intent.putExtra("title", title);
+            }
+        });
         return root;
     }
 

@@ -5,5 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StopsActivity">
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Info"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textColor="@color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
