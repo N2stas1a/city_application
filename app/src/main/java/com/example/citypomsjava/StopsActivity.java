@@ -25,6 +25,7 @@ public class StopsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stops);
+
         int selected_tram_id = getIntent().getIntExtra("id", -1);
         String title = getIntent().getStringExtra("title");
 
@@ -41,8 +42,6 @@ public class StopsActivity extends AppCompatActivity {
 
         dbManager = new DBManager(this);
         dbManager.open();
-
-        dbManager.populate();
 
         Cursor cursor = dbManager.fetch_routes(selected_tram_id);
 
