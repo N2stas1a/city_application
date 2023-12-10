@@ -24,20 +24,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.citypomsjava.R;
-import com.example.citypomsjava.databinding.FragmentAllRoutesBinding;
+import com.example.citypomsjava.databinding.FragmentAllSubwayBinding;
 
-public class AllRouteFragment extends Fragment {
+public class AllSubwayFragment extends Fragment {
     private DBManager dbManager;
     //  private ListView listView;
     private SimpleCursorAdapter adapter;
-    private FragmentAllRoutesBinding binding;
+    private FragmentAllSubwayBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         AllRouteViewModel galleryViewModel =
                 new ViewModelProvider(this).get(AllRouteViewModel.class);
 
-        binding = FragmentAllRoutesBinding.inflate(inflater, container, false);
+        binding = FragmentAllSubwayBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
 
@@ -63,8 +63,8 @@ public class AllRouteFragment extends Fragment {
 
         Cursor cursor = dbManager.fetch_trams();
 
-        final String[] from = new String[] {"_id", DatabaseHelper.TRAM_NUMBER};
-        final int[] to = new int[] { R.id.id, R.id.title};
+        final String[] from = new String[]{"_id", DatabaseHelper.TRAM_NUMBER};
+        final int[] to = new int[]{R.id.id, R.id.title};
 
         adapter = new SimpleCursorAdapter(
                 requireContext(),
@@ -75,8 +75,8 @@ public class AllRouteFragment extends Fragment {
                 0
         );
 
-        ListView listView = root.findViewById(R.id.listviewTrams);
-        listView.setEmptyView(root.findViewById(R.id.emptyTrams));
+        ListView listView = root.findViewById(R.id.listViewSubway);
+        listView.setEmptyView(root.findViewById(R.id.emptySubways));
 
         listView.setAdapter(adapter);
 

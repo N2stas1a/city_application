@@ -38,9 +38,9 @@ public class RouteFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         if (getActivity() != null) {
-                            allSubwayFragment allSubwayFragment = new allSubwayFragment();
+                            AllSubwayFragment AllSubwayFragment = new AllSubwayFragment();
                             getParentFragmentManager().beginTransaction()
-                                    .replace(R.id.frame_layout, allSubwayFragment)
+                                    .replace(R.id.frame_layout, AllSubwayFragment)
                                     .addToBackStack(null)
                                     .commit();
                         }
@@ -51,9 +51,9 @@ public class RouteFragment extends Fragment {
                         @Override
                         public void onClick(View view) {
                             if (getActivity() != null) {
-                                allSubwayFragment allSubwayFragment = new allSubwayFragment();
+                                AllBusFragment AllBusFragment = new AllBusFragment();
                                 getParentFragmentManager().beginTransaction()
-                                        .replace(R.id.frame_layout, allSubwayFragment)
+                                        .replace(R.id.frame_layout, AllBusFragment)
                                         .addToBackStack(null)
                                         .commit();
                             }

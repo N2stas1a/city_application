@@ -4,28 +4,38 @@
     android:layout_height="wrap_content"
     android:padding="16dp">
 
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/baseline_tram_24"/>
+
     <TextView
-        android:id="@+id/id"
-        android:layout_width="100dp"
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
         android:textStyle="bold"
         android:textSize="48sp"
         android:textColor="@android:color/black"/>
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="200dp"
+        android:id="@+id/id"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="-70dp"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
         android:layout_marginStart="120dp"
-        android:layout_below="@id/id"
-        android:layout_marginTop="-55dp"
-        android:textColor="@android:color/black"
-        android:textSize="30sp" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/id"
-        android:background="@android:color/darker_gray"/>
-
+        android:layout_marginTop="-70dp"
+        android:text="id:"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp" />
 </RelativeLayout>
