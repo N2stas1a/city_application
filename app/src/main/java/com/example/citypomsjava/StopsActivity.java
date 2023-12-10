@@ -65,26 +65,26 @@ public class StopsActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         adapter.changeCursor(cursor);
-/*
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long viewId) {
-                TextView idTextView = (TextView) view.findViewById(R.id.id);
-                TextView titleTextView = (TextView) view.findViewById(R.id.title);
+                TextView idTextView = (TextView) view.findViewById(R.id.stop_id);
+                TextView titleTextView = (TextView) view.findViewById(R.id.stop_title);
 
-                String string_id = idTextView.getText().toString();
-                String title = titleTextView.getText().toString();
-                int tramId = Integer.parseInt(string_id);
-                Intent modify_intent = new Intent(requireContext(), StopsActivity.class);
+                String stop_id = idTextView.getText().toString();
+                String stop_title = titleTextView.getText().toString();
+                int stopId = Integer.parseInt(stop_id);
+                Intent timetable_intent = new Intent(StopsActivity.this, Timetable.class);
 
-                modify_intent.putExtra("id", tramId);
-                modify_intent.putExtra("title", title);
+                timetable_intent.putExtra("stop_id", stopId);
+                timetable_intent.putExtra("tram_id", selected_tram_id);
+                timetable_intent.putExtra("title", stop_title);
 
-                startActivity(modify_intent);
+                startActivity(timetable_intent);
             }
         });
-        
- */
+
     }
 
 }
