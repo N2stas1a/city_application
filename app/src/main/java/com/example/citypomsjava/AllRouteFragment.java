@@ -45,21 +45,6 @@ public class AllRouteFragment extends Fragment {
         dbManager.open();
 
         dbManager.populate();
-        /*
-        Cursor cursor = dbManager.fetch_stops();
-
-        final String[] from = new String[] {"_id", DatabaseHelper.STOP_NAME};
-        final int[] to = new int[] { R.id.id, R.id.title};
-
-        adapter = new SimpleCursorAdapter(
-                requireContext(),
-                R.layout.list_item,
-                cursor,
-                from,
-                to,
-                0
-        );
-        */
 
         Cursor cursor = dbManager.fetch_trams();
 
@@ -92,8 +77,10 @@ public class AllRouteFragment extends Fragment {
 
                 Intent modify_intent = new Intent(requireContext(), StopsActivity.class);
 
-                startActivity(modify_intent);
+                modify_intent.putExtra("id", id);
                 modify_intent.putExtra("title", title);
+
+                startActivity(modify_intent);
             }
         });
         return root;
