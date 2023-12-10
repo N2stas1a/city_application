@@ -72,12 +72,12 @@ public class AllRouteFragment extends Fragment {
                 TextView idTextView = (TextView) view.findViewById(R.id.id);
                 TextView titleTextView = (TextView) view.findViewById(R.id.title);
 
-                String id = idTextView.getText().toString();
+                String string_id = idTextView.getText().toString();
                 String title = titleTextView.getText().toString();
-
+                int tramId = Integer.parseInt(string_id);
                 Intent modify_intent = new Intent(requireContext(), StopsActivity.class);
 
-                modify_intent.putExtra("id", id);
+                modify_intent.putExtra("id", tramId);
                 modify_intent.putExtra("title", title);
 
                 startActivity(modify_intent);

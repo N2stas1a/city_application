@@ -57,12 +57,37 @@ public class DBManager {
         insert_trams(1, 24);
         insert_trams(2, 50);
         insert_trams(3, 11);
-        insert_stops(1, "Piaski Nove");
-        insert_stops(2, "Dauna");
-        insert_stops(3, "Witosa");
-        insert_routes(1, 1, 3, "Witosa");
-        insert_routes(2, 2, 3, "Witosa");
-        insert_routes(3,3, 3, "Witosa");
+        insert_stops(1, "Kurdwanow P+R");
+        insert_stops(2, "Witosa");
+        insert_stops(3, "Nowosadecka");
+        insert_stops(4, "Piaski Nove");
+        insert_stops(5, "Dauna");
+        insert_stops(6, "Biezanovska");
+        insert_stops(7, "Kabel");
+        insert_stops(8, "Dvorcowa");
+        insert_stops(9, "Plaszow");
+        insert_stops(10, "Lipska");
+        insert_stops(11, "Gromadzka");
+        insert_routes(1, 1, 1, "Kurdwanow P+R");
+        insert_routes(2, 1, 2, "Witosa");
+        insert_routes(3, 1, 3, "Nowosadecka");
+        insert_routes(4, 1, 4, "Piaski Nove");
+        insert_routes(5, 1, 5, "Dauna");
+        insert_routes(6, 1, 6, "Biezanovska");
+        insert_routes(7, 1, 7, "Kabel");
+        insert_routes(8, 1, 8, "Dvorcowa");
+        insert_routes(9, 2, 1, "Kurdwanow P+R");
+        insert_routes(10, 2, 2, "Witosa");
+        insert_routes(11, 2, 3, "Nowosadecka");
+        insert_routes(12, 2, 4, "Piaski Nove");
+        insert_routes(13, 2, 5, "Dauna");
+        insert_routes(14, 2, 6, "Biezanovska");
+        insert_routes(15, 2, 7, "Kabel");
+        insert_routes(16, 2, 9, "Plaszow");
+        insert_routes(17, 2, 10, "Lipska");
+        insert_routes(18, 2, 11, "Gromadzka");
+        insert_routes(19, 3, 7, "Kabel");
+        insert_routes(20,3, 3, "Nowosadecka");
     }
 
     public Cursor fetch_trams() {
@@ -81,9 +106,14 @@ public class DBManager {
         }
         return cursor;
     }
-    public Cursor fetch_routes() {
+    public Cursor fetch_routes(int selected_tram_id) {
         String[] columns = new String[] { DatabaseHelper._ENTRY_ID + " AS _id", DatabaseHelper.TRAM_ID, DatabaseHelper.STOP_ID, DatabaseHelper.ROUTE_STOP_NAME };
-        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_ROUTES, columns, null, null, null, null, null);
+
+        String selection = DatabaseHelper.TRAM_ID + " = ?";
+        String[] selectionArgs = new String[]{String.valueOf(selected_tram_id)};
+
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_ROUTES, columns, selection, selectionArgs, null, null, null);
+
         if (cursor != null) {
             cursor.moveToFirst();
         }
