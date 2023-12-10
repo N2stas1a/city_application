@@ -43,15 +43,27 @@ public class AllRouteFragment extends Fragment {
 
         dbManager = new DBManager(requireContext());
         dbManager.open();
-/*
-        String new_name = "test string";
-        String new_desc = "with description";
-        dbManager.insert(new_name, new_desc);
-*/
+
         dbManager.populate();
+        /*
         Cursor cursor = dbManager.fetch_stops();
 
         final String[] from = new String[] {"_id", DatabaseHelper.STOP_NAME};
+        final int[] to = new int[] { R.id.id, R.id.title};
+
+        adapter = new SimpleCursorAdapter(
+                requireContext(),
+                R.layout.list_item,
+                cursor,
+                from,
+                to,
+                0
+        );
+        */
+
+        Cursor cursor = dbManager.fetch_trams();
+
+        final String[] from = new String[] {"_id", DatabaseHelper.TRAM_NUMBER};
         final int[] to = new int[] { R.id.id, R.id.title};
 
         adapter = new SimpleCursorAdapter(
