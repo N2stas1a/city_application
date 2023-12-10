@@ -6,4 +6,6 @@
     <string name="bus">bus</string>
     <string name="subway">subway</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tram_number">replace with tram number</string>
+    <string name="tram_id_string">replace me</string>
 </resources>

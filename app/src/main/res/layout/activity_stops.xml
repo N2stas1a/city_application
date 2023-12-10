@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".StopsActivity">
 
     <ListView
@@ -22,5 +23,22 @@
         android:text="Info"
         android:gravity="center"
         android:textSize="20sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tram_id_transfer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/tram_number"
+        android:gravity="top"
+        android:textSize="30sp"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tram_id_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tram_id_transfer"
+        android:layout_marginStart="100dp"
+        android:text="@string/tram_id_string"
+        android:textSize="30sp"
         android:textColor="@color/black"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
