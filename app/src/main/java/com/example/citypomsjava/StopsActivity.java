@@ -27,9 +27,9 @@ public class StopsActivity extends AppCompatActivity {
 
         dbManager.populate();
 
-        Cursor cursor = dbManager.fetch_stops();
+        Cursor cursor = dbManager.fetch_routes();
 
-        final String[] from = new String[] {"_id", DatabaseHelper.STOP_NAME};
+        final String[] from = new String[] {"_id", DatabaseHelper.ROUTE_STOP_NAME};
         final int[] to = new int[] { R.id.id, R.id.title};
 
         adapter = new SimpleCursorAdapter(
