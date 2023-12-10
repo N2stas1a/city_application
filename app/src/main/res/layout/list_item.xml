@@ -6,19 +6,26 @@
 
     <TextView
         android:id="@+id/id"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@android:color/darker_gray"/>
+        android:textStyle="bold"
+        android:textSize="48sp"
+        android:textColor="@android:color/black"/>
 
-    <!-- Description TextView -->
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
         android:layout_below="@id/id"
-        android:layout_marginTop="8dp"
-        android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"/>
+        android:layout_marginTop="-55dp"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/id"
+        android:background="@android:color/darker_gray"/>
 
 </RelativeLayout>
