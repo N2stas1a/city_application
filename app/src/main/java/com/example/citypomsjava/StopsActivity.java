@@ -57,7 +57,6 @@ public class StopsActivity extends AppCompatActivity {
                 0
         );
 
-
         ListView listView = findViewById(R.id.tram_stops_list);
         listView.setEmptyView(findViewById(R.id.empty_stops));
 

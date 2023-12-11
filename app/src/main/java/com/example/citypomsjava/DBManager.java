@@ -92,6 +92,16 @@ public class DBManager {
         insert_routes(20,3, 3, "Nowosadecka");
 
         insert_timetable(1, 1,1, "4:37");
+        insert_timetable(2, 1,1, "4:39");
+        insert_timetable(3, 1,1, "4:40");
+        insert_timetable(4, 1,1, "4:43");
+        insert_timetable(5, 1,1, "4:46");
+        insert_timetable(6, 1,1, "4:50");
+        insert_timetable(7, 1,1, "4:55");
+        insert_timetable(8, 2,1, "4:59");
+        insert_timetable(9, 2,1, "4:58");
+        insert_timetable(10, 2,1, "4:57");
+
     }
 
     public Cursor fetch_trams() {
@@ -123,9 +133,14 @@ public class DBManager {
         }
         return cursor;
     }
-    public Cursor fetch_timetable() {
+    public Cursor fetch_timetable(int selected_tram_id, int selected_stop_id) {
         String[] columns = new String[] { DatabaseHelper._ARRIVAL_ID + " AS _id", DatabaseHelper.TIME_TRAM_ID, DatabaseHelper.TIME_TRAM_STOP_ID, DatabaseHelper.ARRIVAL_TIME };
-        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_TRAM_TIMETABLE, columns, null, null, null, null, null);
+
+        String selection = DatabaseHelper.TIME_TRAM_ID + " = ? AND " + DatabaseHelper.TIME_TRAM_STOP_ID + " = ?";
+        String[] selectionArgs = new String[]{String.valueOf(selected_tram_id), String.valueOf(selected_stop_id)};
+
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_TRAM_TIMETABLE, columns,selection, selectionArgs, null, null, null);
+
         if (cursor != null) {
             cursor.moveToFirst();
         }
