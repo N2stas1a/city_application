@@ -61,9 +61,9 @@ public class AllBusFragment extends Fragment {
         );
         */
 
-        Cursor cursor = dbManager.fetch_trams();
+        Cursor cursor = dbManager.fetch_buses();
 
-        final String[] from = new String[] {"_id", DatabaseHelper.TRAM_NUMBER};
+        final String[] from = new String[] {"_id", DatabaseHelper.BUS_NUMBER};
         final int[] to = new int[] { R.id.id_buses, R.id.title_buses};
 
         adapter = new SimpleCursorAdapter(

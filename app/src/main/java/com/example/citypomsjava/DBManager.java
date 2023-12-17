@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.BaseColumns;
 
 public class DBManager {
 
@@ -29,17 +28,29 @@ public class DBManager {
         dbHelper.close();
     }
 
-    public void insert_trams(int _tram_id, int tram_number) {
+    public void insert_trams(int _tram_id, int tram_number) { //trams
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper._TRAM_ID, _tram_id);
         contentValue.put(DatabaseHelper.TRAM_NUMBER, tram_number);
         database.insert(DatabaseHelper.TABLE_NAME_TRAMS, null, contentValue);
+    }
+        public void insert_buses(int _bus_id, int bus_number) { //buses
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper._BUS_ID, _bus_id);
+        contentValue.put(DatabaseHelper.BUS_NUMBER, bus_number);
+        database.insert(DatabaseHelper.TABLE_NAME_BUS, null, contentValue);
     }
     public void insert_stops(int _stop_id, String stop_name) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper._STOP_ID, _stop_id);
         contentValue.put(DatabaseHelper.STOP_NAME, stop_name);
         database.insert(DatabaseHelper.TABLE_NAME_TRAM_STOPS, null, contentValue);
+    }
+    public void insert_stops_bus(int _stop_id_bus, String stop_name_bus) { //buses
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper._STOP_ID_BUS, _stop_id_bus);
+        contentValue.put(DatabaseHelper.STOP_NAME_BUS, stop_name_bus);
+        database.insert(DatabaseHelper.TABLE_NAME_BUS_STOPS, null, contentValue);
     }
     public void insert_routes(int _entry_id, int _tram_id, int _stop_id, String route_stop_name) {
         ContentValues contentValue = new ContentValues();
@@ -49,7 +60,14 @@ public class DBManager {
         contentValue.put(DatabaseHelper.ROUTE_STOP_NAME, route_stop_name);
         database.insert(DatabaseHelper.TABLE_NAME_TRAM_ROUTES, null, contentValue);
     }
-
+    public void insert_routes_bus(int _entry_id_bus, int _bus_id, int _stop_id_bus, String route_stop_name_bus) { //buses
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper._ENTRY_ID_BUS, _entry_id_bus);
+        contentValue.put(DatabaseHelper.TRAM_ID_BUS, _bus_id);
+        contentValue.put(DatabaseHelper.STOP_ID_BUS, _stop_id_bus);
+        contentValue.put(DatabaseHelper.ROUTE_STOP_NAME_BUS, route_stop_name_bus);
+        database.insert(DatabaseHelper.TABLE_NAME_BUS_ROUTES, null, contentValue);
+    }
     public void insert_timetable(int _arrival_id, int time_tram_id, int time_stop_id, String arrival_time) {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper._ARRIVAL_ID, _arrival_id);
@@ -59,13 +77,28 @@ public class DBManager {
         database.insert(DatabaseHelper.TABLE_NAME_TRAM_TIMETABLE, null, contentValue);
     }
 
+    public void insert_timetable_bus(int _arrival_id_bus, int time_bus_id, int time_stop_id_bus, String arrival_time_bus) { //buses
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(DatabaseHelper._ARRIVAL_ID_BUS, _arrival_id_bus);
+        contentValue.put(DatabaseHelper.TIME_BUS_ID, time_bus_id);
+        contentValue.put(DatabaseHelper.TIME_BUS_STOP_ID, time_stop_id_bus);
+        contentValue.put(DatabaseHelper.ARRIVAL_TIME_BUS, arrival_time_bus);
+        database.insert(DatabaseHelper.TABLE_NAME_BUS_TIMETABLE, null, contentValue);
+    }
+
     public void populate(){
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_TRAMS);
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_TRAM_STOPS);
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_TRAM_ROUTES);
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_TRAM_TIMETABLE);
-        int[] tramsArray = {24, 50, 11};
+
+        database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS);
+        database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS_STOPS);
+        database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS_ROUTES);
+        database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS_TIMETABLE);
+
         int i = 0;
+        int[] tramsArray = {24, 50, 11};
         for(i = 1; i<4; i++) { insert_trams(i, tramsArray[i-1]); }
         String[] stopsArray = {"Kurdwanow P+R","Witosa","Nowosadecka","Piaski Nove","Dauna","Biezanovska","Kabel","Dvorcowa","Plaszow","Lipska","Gromadzka" };
         for(i = 1; i<12; i++) { insert_stops(i, stopsArray[i-1]); }
@@ -91,6 +124,17 @@ public class DBManager {
         insert_routes(19, 3, 7, "Kabel");
         insert_routes(20,3, 3, "Nowosadecka");
 
+        int[] busesArray = {111, 502, 112};
+        for(i = 1; i<4; i++) { insert_buses(i, busesArray[i-1]); }
+        String[] Busstops = {"Vorzal","Dworcow","Nowosadecka","Piaski","Daun","Biezanov","Kabel","Dvorcowa","Plaszow","Lipska","Gromadzka" };
+        for(i = 1; i<12; i++) { insert_stops_bus(i, Busstops[i-1]); }
+        insert_routes_bus(22, 3, 1, "Vorzal");
+        insert_routes_bus(23, 3, 2, "Dworcow");
+        insert_routes_bus(24, 3, 3, "Nowosadecka");
+        insert_routes_bus(25, 3, 4, "Piaski");
+        insert_routes_bus(26, 3, 5, "Daun");
+        insert_routes_bus(27, 3, 6, "Biezanov");
+
         insert_timetable(1, 1,1, "4:37");
         insert_timetable(2, 1,1, "4:39");
         insert_timetable(3, 1,1, "4:40");
@@ -112,9 +156,27 @@ public class DBManager {
         }
         return cursor;
     }
+    public Cursor fetch_buses() { //buses
+        String[] columns = new String[] { DatabaseHelper._BUS_ID + " AS _id", DatabaseHelper.BUS_NUMBER };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_BUS, columns, null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
     public Cursor fetch_stops() {
         String[] columns = new String[] { DatabaseHelper._STOP_ID + " AS _id", DatabaseHelper.STOP_NAME };
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_TRAM_STOPS, columns, null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public Cursor fetch_stops_bus() { //buses
+        String[] columns = new String[] { DatabaseHelper._STOP_ID_BUS + " AS _id", DatabaseHelper.STOP_NAME_BUS };
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_BUS_STOPS, columns, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
@@ -127,6 +189,20 @@ public class DBManager {
         String[] selectionArgs = new String[]{String.valueOf(selected_tram_id)};
 
         Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_TRAM_ROUTES, columns, selection, selectionArgs, null, null, null);
+
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public Cursor fetch_routes_bus(int selected_bus_id) { //buses
+        String[] columns = new String[] { DatabaseHelper._ENTRY_ID_BUS + " AS _id", DatabaseHelper.TRAM_ID_BUS, DatabaseHelper.STOP_ID_BUS, DatabaseHelper.ROUTE_STOP_NAME_BUS };
+
+        String selection = DatabaseHelper.TRAM_ID_BUS + " = ?";
+        String[] selectionArgs = new String[]{String.valueOf(selected_bus_id)};
+
+        Cursor cursor = database.query(DatabaseHelper.TABLE_NAME_BUS_ROUTES, columns, selection, selectionArgs, null, null, null);
 
         if (cursor != null) {
             cursor.moveToFirst();
@@ -155,8 +231,19 @@ public class DBManager {
         return i;
     }
 
+    public int update_bus(int _bus_id, int bus_number) { //buses
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(DatabaseHelper._BUS_ID, _bus_id);
+        contentValues.put(DatabaseHelper.BUS_NUMBER, bus_number);
+        int i = database.update(DatabaseHelper.TABLE_NAME_BUS, contentValues, DatabaseHelper._BUS_ID + " = " + _bus_id, null);
+        return i;
+    }
     public void delete(long _tram_id) {
         database.delete(DatabaseHelper.TABLE_NAME_TRAMS, DatabaseHelper._TRAM_ID + "=" + _tram_id, null);
+    }
+
+    public void delete_bus(long _bus_id) { //buses
+        database.delete(DatabaseHelper.TABLE_NAME_BUS, DatabaseHelper._BUS_ID + "=" + _bus_id, null);
     }
 
 }
