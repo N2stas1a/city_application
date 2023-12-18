@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 public class RouteFragment extends Fragment {
     CardView tramCard;
     CardView busCard;
-    CardView subwayCard;
+    //CardView subwayCard;
 
 
     @Override
@@ -18,7 +18,7 @@ public class RouteFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_route, container, false);
         tramCard = view.findViewById(R.id.tramCard);
         busCard = view.findViewById(R.id.busCard);
-        subwayCard = view.findViewById(R.id.subwayCard);
+//        subwayCard = view.findViewById(R.id.subwayCard);
 
         if (tramCard != null) {
             tramCard.setOnClickListener(new View.OnClickListener() {
@@ -33,19 +33,19 @@ public class RouteFragment extends Fragment {
                     }
                 }
             });
-            if (subwayCard != null) {
-                subwayCard.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (getActivity() != null) {
-                            AllSubwayFragment AllSubwayFragment = new AllSubwayFragment();
-                            getParentFragmentManager().beginTransaction()
-                                    .replace(R.id.frame_layout, AllSubwayFragment)
-                                    .addToBackStack(null)
-                                    .commit();
-                        }
-                    }
-                });
+//            if (subwayCard != null) {
+//                subwayCard.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        if (getActivity() != null) {
+//                            AllSubwayFragment AllSubwayFragment = new AllSubwayFragment();
+//                            getParentFragmentManager().beginTransaction()
+//                                    .replace(R.id.frame_layout, AllSubwayFragment)
+//                                    .addToBackStack(null)
+//                                    .commit();
+//                        }
+//                    }
+//                });
                 if (busCard != null) {
                     busCard.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -61,7 +61,6 @@ public class RouteFragment extends Fragment {
                     });
                 }
             }
-        }
         return view;
     }
 }

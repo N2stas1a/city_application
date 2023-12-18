@@ -13,7 +13,10 @@
         android:theme="@style/Theme.CityPOMSJava"
         tools:targetApi="31">
         <activity
-            android:name=".StopsActivity_bus"
+            android:name=".TimetableBus"
+            android:exported="false" />
+        <activity
+            android:name=".StopsActivityBus"
             android:exported="false" />
         <activity
             android:name=".Timetable"

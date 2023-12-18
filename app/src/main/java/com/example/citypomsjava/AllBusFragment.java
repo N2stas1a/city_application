@@ -87,13 +87,16 @@ public class AllBusFragment extends Fragment {
                 TextView idTextView = (TextView) view.findViewById(R.id.id_buses);
                 TextView titleTextView = (TextView) view.findViewById(R.id.title_buses);
 
-                String id = idTextView.getText().toString();
+                String busid = idTextView.getText().toString();
+                int busidint = Integer.parseInt(busid);
                 String title = titleTextView.getText().toString();
 
-                Intent modify_intent = new Intent(requireContext(), StopsActivity.class);
+                Intent modify_intent = new Intent(requireContext(), StopsActivityBus.class);
+                modify_intent.putExtra("id", busidint);
+                modify_intent.putExtra("title", title);
 
                 startActivity(modify_intent);
-                modify_intent.putExtra("title", title);
+
             }
         });
         return root;
