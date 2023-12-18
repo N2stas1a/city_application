@@ -3,18 +3,22 @@ package com.example.citypomsjava;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.citypomsjava.databinding.FragmentAllRoutesBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Timetable extends AppCompatActivity {
     private DBManager dbManager;
     //  private ListView listView;
     private SimpleCursorAdapter adapter;
     private FragmentAllRoutesBinding binding;
+
+    private FloatingActionButton floatingAddButtonTimetable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +27,13 @@ public class Timetable extends AppCompatActivity {
         int stop_id = getIntent().getIntExtra("stop_id", -1);
         int selected_tram_id = getIntent().getIntExtra("tram_id", -1);
         String title = getIntent().getStringExtra("title");
+
+        floatingAddButtonTimetable = findViewById(R.id.floatingAddButtonTimetable);
+        floatingAddButtonTimetable.setOnClickListener(view -> {
+                    Intent intent = new Intent(Timetable.this, AddActivity.class);
+                    intent.putExtra("FishText", "timetable");
+                    startActivity(intent);
+                });
 
         TextView tramIDTextView = findViewById(R.id.notEmpty_timetable);
         // Set a new text value programmatically

@@ -1,5 +1,6 @@
 package com.example.citypomsjava;
 
+import com.example.citypomsjava.AddActivity;
 import com.example.citypomsjava.DBManager;
 import com.example.citypomsjava.DatabaseHelper;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +16,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.citypomsjava.databinding.FragmentAllRoutesBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class StopsActivity extends AppCompatActivity {
     private DBManager dbManager;
     //  private ListView listView;
     private SimpleCursorAdapter adapter;
     private FragmentAllRoutesBinding binding;
+    private FloatingActionButton floatingAddButtonStops;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,12 @@ public class StopsActivity extends AppCompatActivity {
         int selected_tram_id = getIntent().getIntExtra("id", -1);
         String title = getIntent().getStringExtra("title");
 
+        floatingAddButtonStops = findViewById(R.id.floatingAddButtonStops);
+        floatingAddButtonStops.setOnClickListener(view -> {
+                    Intent intent = new Intent(StopsActivity.this, AddActivity.class);
+                    intent.putExtra("FishText", "stops");
+                    startActivity(intent);
+                });
         // Find the TextView by its ID
         TextView tramNumberTextView = findViewById(R.id.tram_id_transfer);
         // Set a new text value programmatically
@@ -84,5 +95,4 @@ public class StopsActivity extends AppCompatActivity {
         });
 
     }
-
 }

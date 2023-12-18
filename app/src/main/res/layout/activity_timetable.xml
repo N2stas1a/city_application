@@ -46,4 +46,16 @@
             android:textSize="20dp"
             android:layout_height="match_parent"/>
     </FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingAddButtonTimetable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:layout_marginLeft="270dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:foregroundGravity="bottom|left"
+        android:clickable="true"
+        app:srcCompat="@drawable/baseline_add_24"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

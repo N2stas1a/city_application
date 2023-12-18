@@ -2,6 +2,8 @@ package com.example.citypomsjava;
 
 import com.example.citypomsjava.DBManager;
 import com.example.citypomsjava.DatabaseHelper;
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.view.LayoutInflater;
@@ -25,21 +27,30 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.citypomsjava.R;
 import com.example.citypomsjava.databinding.FragmentAllRoutesBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AllRouteFragment extends Fragment {
     private DBManager dbManager;
     //  private ListView listView;
     private SimpleCursorAdapter adapter;
     private FragmentAllRoutesBinding binding;
+    private FloatingActionButton floatingAddButton;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         AllRouteViewModel galleryViewModel =
                 new ViewModelProvider(this).get(AllRouteViewModel.class);
 
         binding = FragmentAllRoutesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        floatingAddButton = root.findViewById(R.id.floatingAddButton);
+        floatingAddButton.setOnClickListener(view -> {
+            Intent intent = new Intent(requireContext(), AddActivity.class);
+            intent.putExtra("FishText", "trams");
+            startActivity(intent);
+        });
 
         dbManager = new DBManager(requireContext());
         dbManager.open();
@@ -61,7 +72,7 @@ public class AllRouteFragment extends Fragment {
         );
 
         ListView listView = root.findViewById(R.id.listviewTrams);
-        listView.setEmptyView(root.findViewById(R.id.emptyTrams));
+//        listView.setEmptyView(root.findViewById(R.id.emptyTrams));
 
         listView.setAdapter(adapter);
 

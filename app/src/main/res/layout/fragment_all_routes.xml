@@ -15,10 +15,14 @@
         android:padding="10dp" >
     </ListView>
 
-    <TextView
-        android:id="@+id/emptyTrams"
-        android:textColor="@color/black"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingAddButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="270dp"
+        android:layout_marginBottom="120dp"
+        android:clickable="true"
+        android:foregroundGravity="bottom|left"
+        android:src="@drawable/baseline_add_24" />
 </RelativeLayout>
