@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import com.example.citypomsjava.DatabaseHelper;
+import android.widget.Toast;
 
 public class DBManager {
 
@@ -32,9 +34,29 @@ public class DBManager {
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper._TRAM_ID, _tram_id);
         contentValue.put(DatabaseHelper.TRAM_NUMBER, tram_number);
-        database.insert(DatabaseHelper.TABLE_NAME_TRAMS, null, contentValue);
+        long result = database.insert(DatabaseHelper.TABLE_NAME_TRAMS, null, contentValue);
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show();
+        }
     }
-        public void insert_buses(int _bus_id, int bus_number) { //buses
+
+//    public void addTram(Context context, int tram_id, int tram_number){
+//
+//        ContentValues cv = new ContentValues();
+//        cv.put(DatabaseHelper._TRAM_ID, tram_id);
+//        cv.put(DatabaseHelper.TRAM_NUMBER, tram_number);
+//
+//        long result = db.insert(DatabaseHelper.TABLE_NAME_TRAMS, null, cv);
+//        if(result == -1){
+//            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(context, "Added Successfully", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+
+    public void insert_buses(int _bus_id, int bus_number) { //buses
         ContentValues contentValue = new ContentValues();
         contentValue.put(DatabaseHelper._BUS_ID, _bus_id);
         contentValue.put(DatabaseHelper.BUS_NUMBER, bus_number);
@@ -85,8 +107,7 @@ public class DBManager {
         contentValue.put(DatabaseHelper.ARRIVAL_TIME_BUS, arrival_time_bus);
         database.insert(DatabaseHelper.TABLE_NAME_BUS_TIMETABLE, null, contentValue);
     }
-
-    public void populate(){
+    public void clean() {
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_TRAMS);
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_TRAM_STOPS);
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_TRAM_ROUTES);
@@ -96,7 +117,8 @@ public class DBManager {
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS_STOPS);
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS_ROUTES);
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS_TIMETABLE);
-
+    }
+    public void populate(){
         int i = 0;
         int[] tramsArray = {24, 50, 11};
         for(i = 1; i<4; i++) { insert_trams(i, tramsArray[i-1]); }
@@ -145,7 +167,6 @@ public class DBManager {
         insert_timetable(8, 2,1, "4:59");
         insert_timetable(9, 2,1, "4:58");
         insert_timetable(10, 2,1, "4:57");
-
     }
 
     public Cursor fetch_trams() {

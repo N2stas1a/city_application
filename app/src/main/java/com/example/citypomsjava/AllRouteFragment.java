@@ -1,5 +1,7 @@
 package com.example.citypomsjava;
 
+import static androidx.core.app.ActivityCompat.recreate;
+
 import com.example.citypomsjava.DBManager;
 import com.example.citypomsjava.DatabaseHelper;
 
@@ -13,6 +15,8 @@ import android.provider.BaseColumns;
 import android.widget.TextView;
 import android.content.Intent;
 import android.database.Cursor;
+
+import androidx.annotation.Nullable;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import android.os.Bundle;
 import android.view.Menu;
@@ -55,7 +59,8 @@ public class AllRouteFragment extends Fragment {
         dbManager = new DBManager(requireContext());
         dbManager.open();
 
-        dbManager.populate();
+        //dbManager.clean();
+        //dbManager.populate();
 
         Cursor cursor = dbManager.fetch_trams();
 
@@ -97,6 +102,25 @@ public class AllRouteFragment extends Fragment {
         return root;
     }
 
+    public void updateTramsList() {
+        Cursor newCursor = dbManager.fetch_trams();
+        if (adapter != null) {
+            Cursor oldCursor = adapter.swapCursor(newCursor);
+            if (oldCursor != null && !oldCursor.isClosed()) {
+                oldCursor.close();
+            }
+            adapter.notifyDataSetChanged(); // Уведомление об изменении данных
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == AddActivity.RESULT_OK) {
+            updateTramsList();
+        }
+    }
+    
     @Override
     public void onDestroyView() {
         super.onDestroyView();

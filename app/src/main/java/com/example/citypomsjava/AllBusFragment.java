@@ -43,8 +43,8 @@ public class AllBusFragment extends Fragment {
 
         dbManager = new DBManager(requireContext());
         dbManager.open();
-
-        dbManager.populate();
+        //dbManager.clean();
+        //dbManager.populate();
         /*
         Cursor cursor = dbManager.fetch_stops();
 

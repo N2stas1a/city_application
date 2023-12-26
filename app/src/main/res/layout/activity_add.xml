@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddActivity"
     android:padding="30dp">
+
     <EditText
-        android:id="@+id/TramNumber_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:ems="10"
-        android:hint="number"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <EditText
-        android:id="@+id/TramNumberID_input"
+        android:id="@+id/TramNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
@@ -30,28 +21,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/StopName_input"
+        android:id="@+id/TramNumberID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="250dp"
         android:ems="10"
-        android:hint="Stop name"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TramNumber_input" />
-
-    <EditText
-        android:id="@+id/pages_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Number of pages"
+        android:hint="ID"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/StopName_input" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/add_button"
@@ -63,20 +42,25 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pages_input" />
+        app:layout_constraintTop_toBottomOf="@+id/TramNumberID" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/lavender">
+        android:background="@color/lavender"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <TextView
-        android:id="@+id/FishText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="15dp"
+            android:id="@+id/FishText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-        android:text="@string/tram_id_string"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"/>
+            android:text="@string/tram_id_string"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
