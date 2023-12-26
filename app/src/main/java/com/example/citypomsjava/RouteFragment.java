@@ -1,5 +1,6 @@
 package com.example.citypomsjava;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,13 +25,9 @@ public class RouteFragment extends Fragment {
             tramCard.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (getActivity() != null) {
-                        AllRouteFragment allRouteFragment = new AllRouteFragment();
-                        getParentFragmentManager().beginTransaction()
-                                .replace(R.id.frame_layout, allRouteFragment)
-                                .addToBackStack(null)
-                                .commit();
-                    }
+                    Intent transition_to_trams = new Intent(requireContext(), TramsList.class);
+                    startActivity(transition_to_trams);
+
                 }
             });
 //            if (subwayCard != null) {

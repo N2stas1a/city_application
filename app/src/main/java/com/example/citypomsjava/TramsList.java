@@ -1,11 +1,15 @@
 package com.example.citypomsjava;
 
-import static androidx.core.app.ActivityCompat.recreate;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
-import com.example.citypomsjava.DBManager;
-import com.example.citypomsjava.DatabaseHelper;
-import androidx.fragment.app.FragmentManager;
-import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.view.LayoutInflater;
@@ -33,31 +37,25 @@ import com.example.citypomsjava.R;
 import com.example.citypomsjava.databinding.FragmentAllRoutesBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class AllRouteFragment extends Fragment {
+public class TramsList extends AppCompatActivity {
     private DBManager dbManager;
     //  private ListView listView;
     private SimpleCursorAdapter adapter;
     private FragmentAllRoutesBinding binding;
     private FloatingActionButton floatingAddButton;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_trams_list);
 
-
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-
-        AllRouteViewModel galleryViewModel =
-                new ViewModelProvider(this).get(AllRouteViewModel.class);
-
-        binding = FragmentAllRoutesBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        floatingAddButton = root.findViewById(R.id.floatingAddButton);
-
+        floatingAddButton = this.findViewById(R.id.floatingAddButton);
         floatingAddButton.setOnClickListener(view -> {
-            Intent intent = new Intent(requireContext(), AddActivity.class);
+            Intent intent = new Intent(TramsList.this, AddActivity.class);
             intent.putExtra("FishText", "trams");
-            getActivity().startActivityForResult(intent, 1);
+            startActivityForResult(intent, 1);
         });
 
-        dbManager = new DBManager(requireContext());
+        dbManager = new DBManager(TramsList.this);
         dbManager.open();
 
         //dbManager.clean();
@@ -69,7 +67,7 @@ public class AllRouteFragment extends Fragment {
         final int[] to = new int[] { R.id.id_routes, R.id.title_routes};
 
         adapter = new SimpleCursorAdapter(
-                requireContext(),
+                TramsList.this,
                 R.layout.list_item,
                 cursor,
                 from,
@@ -77,7 +75,7 @@ public class AllRouteFragment extends Fragment {
                 0
         );
 
-        ListView listView = root.findViewById(R.id.listviewTrams_fragment);
+        ListView listView = this.findViewById(R.id.listviewTrams);
 //        listView.setEmptyView(root.findViewById(R.id.emptyTrams));
 
         listView.setAdapter(adapter);
@@ -93,7 +91,7 @@ public class AllRouteFragment extends Fragment {
                 String string_id = idTextView.getText().toString();
                 String title = titleTextView.getText().toString();
                 int tramId = Integer.parseInt(string_id);
-                Intent modify_intent = new Intent(requireContext(), StopsActivity.class);
+                Intent modify_intent = new Intent(TramsList.this, StopsActivity.class);
 
                 modify_intent.putExtra("id", tramId);
                 modify_intent.putExtra("title", title);
@@ -101,32 +99,13 @@ public class AllRouteFragment extends Fragment {
                 startActivity(modify_intent);
             }
         });
-        return root;
     }
 
-    public void updateTramsList() {
-        Cursor newCursor = dbManager.fetch_trams();
-        if (adapter != null) {
-            Cursor oldCursor = adapter.swapCursor(newCursor);
-            if (oldCursor != null && !oldCursor.isClosed()) {
-                oldCursor.close();
-            }
-            adapter.notifyDataSetChanged(); // Уведомление об изменении данных
-        }
-    }
-
-    @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == AddActivity.RESULT_OK) {
-            updateTramsList();
+        if (requestCode == 1) {
+            recreate();
         }
     }
-    
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        dbManager.close();
-        binding = null;
-    }
+
 }

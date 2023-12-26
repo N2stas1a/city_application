@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.example.citypomsjava.DBManager;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.citypomsjava.DatabaseHelper;
+import androidx.fragment.app.FragmentManager;
+
 
 public class AddActivity extends AppCompatActivity {
 
@@ -37,6 +39,9 @@ public class AddActivity extends AppCompatActivity {
                 int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
                 int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
                 dbManager.insert_trams(tramID, tramN);
+
+                FragmentManager fragmentManager = getSupportFragmentManager(); // Use getSupportFragmentManager() if you're using AppCompatActivity
+                fragmentManager.popBackStack(); // P
             }
         });
     }

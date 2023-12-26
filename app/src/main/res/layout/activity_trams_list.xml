@@ -8,7 +8,7 @@
     android:background="@color/white"
     tools:context="AllRouteFragment">
     <ListView
-        android:id="@+id/listviewTrams_fragment"
+        android:id="@+id/listviewTrams"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:dividerHeight="1dp"
