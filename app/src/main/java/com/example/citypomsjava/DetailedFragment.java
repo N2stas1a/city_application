@@ -24,8 +24,8 @@ public class DetailedFragment extends Fragment {
         Bundle args = getArguments();
         if (args != null) {
             String name = args.getString("name", "");
-            String time = args.getString("time", "");
-            int desc = args.getInt("desc", R.string.MinskDesc);
+            String desc = args.getString("desc", "");
+           // int desc = args.getInt("desc", R.string.MinskDesc);
             int image = args.getInt("image", R.drawable.minsk);
 
             binding.detailName.setText(name);

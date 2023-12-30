@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
 
     private void initListView(View rootView) {
         int[] imageList = {R.drawable.minsk, R.drawable.vitebsk, R.drawable.grodno, R.drawable.mogilev, R.drawable.gomel, R.drawable.brest};
-        int[] DescList = {R.string.MinskDesc, R.string.VitebskDesc, R.string.GrodnoDesc, R.string.GomelDesc, R.string.BrestDesc, R.string.MogilevDesc};
+        int[] descListResourceIds = {R.string.MinskDesc, R.string.VitebskDesc, R.string.GrodnoDesc, R.string.GomelDesc, R.string.BrestDesc, R.string.MogilevDesc};
         String[] nameList = {
                 getString(R.string.Minsk),
                 getString(R.string.Vitebsk),
