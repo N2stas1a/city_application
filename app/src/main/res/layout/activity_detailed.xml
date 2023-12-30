@@ -10,7 +10,7 @@
     tools:context=".DetailedFragment">
 
     <TextView
-        android:id="@+id/detailName"
+        android:id="@+id/detailName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -49,8 +49,9 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
+
     <TextView
-        android:id="@+id/detailName2"
+        android:id="@+id/detailName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -67,7 +68,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/detailDesc"
+        android:id="@+id/detailDesc3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
