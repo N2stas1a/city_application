@@ -31,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
         initBottomNavigationView();
         initListView();
         replaceFragment(new HomeFragment());
+
+        DetailedFragment detailedFragment = new DetailedFragment();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, detailedFragment)
+                .addToBackStack(null)
+                .commit();
+
     }
 
     private void initBottomNavigationView() {
@@ -82,12 +89,25 @@ public class MainActivity extends AppCompatActivity {
 
         listAdapter = new ListAdapter(MainActivity.this, dataArrayList);
         binding.listview.setAdapter(listAdapter);
+
         binding.listview.setOnItemClickListener((adapterView, view, i, l) -> {
             ListData selectedData = dataArrayList.get(i);
-            Intent intent = new Intent(MainActivity.this, DetailedFragment.class);
-            intent.putExtra("desc", selectedData.getDesc());
-            intent.putExtra("image", selectedData.getImage());
-            startActivity(intent);
+
+            // Создаем фрагмент DetailedFragment
+            DetailedFragment detailedFragment = new DetailedFragment();
+
+            // Передаем данные в фрагмент
+            Bundle args = new Bundle();
+            args.putString("name", selectedData.getName());
+            args.putString("desc", selectedData.getDesc());
+            args.putInt("image", selectedData.getImage());
+            detailedFragment.setArguments(args);
+
+            // Заменяем текущий фрагмент на DetailedFragment
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_layout, detailedFragment)
+                    .addToBackStack(null)
+                    .commit();
         });
     }
 
