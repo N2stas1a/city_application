@@ -17,9 +17,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    ListAdapter listAdapter;
-    ArrayList<ListData> dataArrayList = new ArrayList<>();
-    ListData listData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding.bottomNavigationView.setBackground(null);
         initBottomNavigationView();
-        initListView();
         replaceFragment(new HomeFragment());
-
-        DetailedFragment detailedFragment = new DetailedFragment();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, detailedFragment)
-                .addToBackStack(null)
-                .commit();
 
     }
 
@@ -60,56 +51,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initListView() {
-        int[] imageList = {R.drawable.minsk, R.drawable.vitebsk, R.drawable.grodno, R.drawable.mogilev, R.drawable.gomel, R.drawable.brest};
-        int[] DescList = {R.string.MinskDesc, R.string.VitebskDesc, R.string.GrodnoDesc, R.string.GomelDesc, R.string.BrestDesc, R.string.MogilevDesc};
-        String[] nameList = {
-                getString(R.string.Minsk),
-                getString(R.string.Vitebsk),
-                getString(R.string.Mogilev),
-                getString(R.string.Grodno),
-                getString(R.string.Gomel),
-                getString(R.string.Brest)
-        };
 
-        String[] descList = {
-                getString(R.string.MinskDesc),
-                getString(R.string.VitebskDesc),
-                getString(R.string.MogilevDesc),
-                getString(R.string.GrodnoDesc),
-                getString(R.string.GomelDesc),
-                getString(R.string.BrestDesc)
-        };
-
-
-        for (int i = 0; i < imageList.length; i++) {
-            listData = new ListData(nameList[i], descList[i], imageList[i]);
-            dataArrayList.add(listData);
-        }
-
-        listAdapter = new ListAdapter(MainActivity.this, dataArrayList);
-        binding.listview.setAdapter(listAdapter);
-
-        binding.listview.setOnItemClickListener((adapterView, view, i, l) -> {
-            ListData selectedData = dataArrayList.get(i);
-
-            // Создаем фрагмент DetailedFragment
-            DetailedFragment detailedFragment = new DetailedFragment();
-
-            // Передаем данные в фрагмент
-            Bundle args = new Bundle();
-            args.putString("name", selectedData.getName());
-            args.putString("desc", selectedData.getDesc());
-            args.putInt("image", selectedData.getImage());
-            detailedFragment.setArguments(args);
-
-            // Заменяем текущий фрагмент на DetailedFragment
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_layout, detailedFragment)
-                    .addToBackStack(null)
-                    .commit();
-        });
-    }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
