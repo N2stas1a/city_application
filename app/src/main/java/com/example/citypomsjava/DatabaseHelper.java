@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -146,4 +145,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    void updateData(String row_id, int tramNumber, String tramNumberID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        String tramNumberIdText = tramNumberID.getText().toString();
+        cv.put(TRAM_NUMBER, tramNumber);
+        cv.put(_TRAM_ID, tramNumberIdText);
+        long result = db.update(TABLE_NAME_TRAMS, cv, "_id=?", new String[]{row_id});
+        Context context = null;
+        if (result == -1) {
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    void deleteOneRow(String row_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.update(TABLE_NAME_TRAMS, "_id=?", new String[]{row_id});
+        Context context = null;
+        if (result == -1) {
+            Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Successfully Deleted!", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

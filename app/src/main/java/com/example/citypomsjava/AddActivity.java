@@ -33,16 +33,13 @@ public class AddActivity extends AppCompatActivity {
         dbManager = new DBManager(this);
         dbManager.open();
 
-        add_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
-                int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
-                dbManager.insert_trams(tramID, tramN);
+        add_button.setOnClickListener(view -> {
+            int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
+            int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
+            dbManager.insert_trams(tramID, tramN);
 
-                FragmentManager fragmentManager = getSupportFragmentManager(); // Use getSupportFragmentManager() if you're using AppCompatActivity
-                fragmentManager.popBackStack(); // P
-            }
+            FragmentManager fragmentManager = getSupportFragmentManager(); // Use getSupportFragmentManager() if you're using AppCompatActivity
+            fragmentManager.popBackStack(); // P
         });
     }
 }
