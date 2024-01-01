@@ -55,13 +55,12 @@ public class CRUDActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_item);
-
-//        TramNumberID = findViewById(R.id.TramNumberID);
-//        TramNumber = findViewById(R.id.TramNumber);
-//        add_button = findViewById(R.id.add_button);
-        update_button = findViewById(R.id.update_button);
-        delete_button = findViewById(R.id.delete_button);
+        setContentView(R.layout.activity_add);
+        TramNumberID = findViewById(R.id.TramNumberID);
+        TramNumber = findViewById(R.id.TramNumber);
+        add_button = findViewById(R.id.add_button);
+//        update_button = findViewById(R.id.update_button);
+//        delete_button = findViewById(R.id.delete_button);
         dbManager = new DBManager(this);
         dbManager.open();
 
@@ -74,13 +73,10 @@ public class CRUDActivity extends AppCompatActivity {
                 AlertDialog.Builder builder = new AlertDialog.Builder(CRUDActivity.this);
                 builder.setTitle("Delete " + TramNumberID.getText().toString() + " ?");
                 builder.setMessage("Are you sure you want to delete " + TramNumberID.getText().toString() + " ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        DatabaseHelper myDB = new DatabaseHelper(CRUDActivity.this);
-                        myDB.deleteOneRow(id);
-                        finish();
-                    }
+                builder.setPositiveButton("Yes", (dialogInterface, i) -> {
+                    DatabaseHelper myDB = new DatabaseHelper(CRUDActivity.this);
+                    myDB.deleteOneRow(id);
+                    finish();
                 });
                 builder.setNegativeButton("No", (dialogInterface, i) -> {
                     builder.show();
