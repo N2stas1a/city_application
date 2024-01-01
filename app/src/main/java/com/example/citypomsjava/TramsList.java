@@ -60,21 +60,13 @@ public class TramsList extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         adapter.changeCursor(cursor);
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView idTextView = (TextView) view.findViewById(R.id.id_routes);
                 TextView titleTextView = (TextView) view.findViewById(R.id.title_routes);
 
-<<<<<<< HEAD
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView idTextView = (TextView) view.findViewById(R.id.id_routes);
-                TextView titleTextView = (TextView) view.findViewById(R.id.title_routes);
-
-=======
->>>>>>> 149f207ae3028d0f60707dcd23906f57279749ef
                 String string_id = idTextView.getText().toString();
                 String title = titleTextView.getText().toString();
                 int tramId = Integer.parseInt(string_id);
@@ -87,10 +79,7 @@ public class TramsList extends AppCompatActivity {
                 return true;
             }
         });
-<<<<<<< HEAD
 
-=======
->>>>>>> 149f207ae3028d0f60707dcd23906f57279749ef
         listView.setOnItemClickListener((parent, view, position, viewId) -> {
             TextView idTextView = (TextView) view.findViewById(R.id.id_routes);
             TextView titleTextView = (TextView) view.findViewById(R.id.title_routes);
