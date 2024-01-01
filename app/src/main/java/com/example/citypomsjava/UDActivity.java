@@ -54,4 +54,10 @@ public class UDActivity extends AppCompatActivity {
             db.updateData(id, tramNumber, tramNumberID);
         });
     }
+    public void onUpdateButtonClick(View view) {
+        DatabaseHelper db = new DatabaseHelper(UDActivity.this);
+        int tramNumber = Integer.parseInt(TramNumber.getText().toString().trim());
+        String tramNumberID = TramNumberID.getText().toString().trim();
+        db.updateData(id, tramNumber, tramNumberID);
+    }
 }

@@ -30,7 +30,7 @@ public class Timetable extends AppCompatActivity {
 
         floatingAddButtonTimetable = findViewById(R.id.floatingAddButtonTimetable);
         floatingAddButtonTimetable.setOnClickListener(view -> {
-                    Intent intent = new Intent(Timetable.this, CRUDActivity.class);
+                    Intent intent = new Intent(Timetable.this, AddActivity.class);
                     intent.putExtra("FishText", "timetable");
                     startActivity(intent);
                 });

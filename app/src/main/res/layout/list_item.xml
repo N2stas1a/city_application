@@ -10,23 +10,23 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/baseline_tram_24"/>
 
-    <ImageView
+    <Button
         android:id="@+id/delete_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="250dp"
-        android:src="@drawable/baseline_delete_24"
-        android:onClick="onDeleteButtonClick"/>
+        android:onClick="onDeleteButtonClick"
+        android:src="@drawable/baseline_delete_24"/>
 
-    <ImageView
+    <Button
         android:id="@+id/update_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="190dp"
-        android:src="@drawable/baseline_update_24"
-        android:onClick="onUpdateButtonClick"/>
+        android:src="@drawable/baseline_update_24"/>
+
 
     <TextView
         android:id="@+id/title_routes"

@@ -40,7 +40,7 @@ public class AllRouteFragment extends Fragment {
         floatingAddButton = root.findViewById(R.id.floatingAddButton);
 
         floatingAddButton.setOnClickListener(view -> {
-            Intent intent = new Intent(requireContext(), CRUDActivity.class);
+            Intent intent = new Intent(requireContext(), AddActivity.class);
             intent.putExtra("FishText", "trams");
             getActivity().startActivityForResult(intent, 1);
         });
@@ -106,7 +106,7 @@ public class AllRouteFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == CRUDActivity.RESULT_OK) {
+        if (requestCode == 1 && resultCode == AddActivity.RESULT_OK) {
             updateTramsList();
         }
     }

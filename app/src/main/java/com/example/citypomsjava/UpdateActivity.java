@@ -1,5 +1,5 @@
 package com.example.citypomsjava;
-
+import android.util.Log;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -54,10 +54,23 @@ public class UpdateActivity extends AppCompatActivity {
         });
 
         update_button.setOnClickListener(view -> {
+            onUpdateButtonClick(view);  // Вызываем метод onUpdateButtonClick
+
+            // Ваш код после вызова onUpdateButtonClick
             DatabaseHelper db = new DatabaseHelper(UpdateActivity.this);
             int tramNumber = Integer.parseInt(TramNumber.getText().toString().trim());
             String tramNumberID = TramNumberID.getText().toString().trim();
             db.updateData(id, tramNumber, tramNumberID);
+
+            // Выводим сообщение в лог
+            Log.d("UpdateActivity", "onUpdateButtonClick is called!");
         });
+
+    }
+    public void onUpdateButtonClick(View view) {
+        DatabaseHelper db = new DatabaseHelper(UpdateActivity.this);
+        int tramNumber = Integer.parseInt(TramNumber.getText().toString().trim());
+        String tramNumberID = TramNumberID.getText().toString().trim();
+        db.updateData(id, tramNumber, tramNumberID);
     }
 }
