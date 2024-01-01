@@ -28,7 +28,7 @@ public class CRUDActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return yourDataList.size();
+            //return yourDataList.size();
             return 0;
         }
 
@@ -55,15 +55,11 @@ public class CRUDActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.list_item);
 
-        String title = getIntent().getStringExtra("FishText");
-        TextView fishIDTextView = findViewById(R.id.FishText);
-        fishIDTextView.setText(title);
-
-        TramNumberID = findViewById(R.id.TramNumberID);
-        TramNumber = findViewById(R.id.TramNumber);
-        add_button = findViewById(R.id.add_button);
+//        TramNumberID = findViewById(R.id.TramNumberID);
+//        TramNumber = findViewById(R.id.TramNumber);
+//        add_button = findViewById(R.id.add_button);
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
         dbManager = new DBManager(this);
