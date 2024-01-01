@@ -64,40 +64,40 @@ public class CRUDActivity extends AppCompatActivity {
         dbManager = new DBManager(this);
         dbManager.open();
 
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmDialog();
-            }
-            private void confirmDialog() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CRUDActivity.this);
-                builder.setTitle("Delete " + TramNumberID.getText().toString() + " ?");
-                builder.setMessage("Are you sure you want to delete " + TramNumberID.getText().toString() + " ?");
-                builder.setPositiveButton("Yes", (dialogInterface, i) -> {
-                    DatabaseHelper myDB = new DatabaseHelper(CRUDActivity.this);
-                    myDB.deleteOneRow(id);
-                    finish();
-                });
-                builder.setNegativeButton("No", (dialogInterface, i) -> {
-                    builder.show();
-                });
-            }
-        });
+//        delete_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                confirmDialog();
+//            }
+//            private void confirmDialog() {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(CRUDActivity.this);
+//                builder.setTitle("Delete " + TramNumberID.getText().toString() + " ?");
+//                builder.setMessage("Are you sure you want to delete " + TramNumberID.getText().toString() + " ?");
+//                builder.setPositiveButton("Yes", (dialogInterface, i) -> {
+//                    DatabaseHelper myDB = new DatabaseHelper(CRUDActivity.this);
+//                    myDB.deleteOneRow(id);
+//                    finish();
+//                });
+//                builder.setNegativeButton("No", (dialogInterface, i) -> {
+//                    builder.show();
+//                });
+//            }
+//        });
 
-        update_button.setOnClickListener(view -> {
-            DatabaseHelper db = new DatabaseHelper(CRUDActivity.this);
-            int tramNumber = Integer.parseInt(TramNumber.getText().toString().trim());
-            String tramNumberID = TramNumberID.getText().toString().trim();
-            db.updateData(id, tramNumber, tramNumberID);
-        });
-
-        add_button.setOnClickListener(view -> {
-            int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
-            int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
-            dbManager.insert_trams(tramID, tramN);
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.popBackStack();
-        });
+//        update_button.setOnClickListener(view -> {
+//            DatabaseHelper db = new DatabaseHelper(CRUDActivity.this);
+//            int tramNumber = Integer.parseInt(TramNumber.getText().toString().trim());
+//            String tramNumberID = TramNumberID.getText().toString().trim();
+//            db.updateData(id, tramNumber, tramNumberID);
+//        });
+//
+//        add_button.setOnClickListener(view -> {
+//            int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
+//            int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
+//            dbManager.insert_trams(tramID, tramN);
+//
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.popBackStack();
+//        });
     }
 }
