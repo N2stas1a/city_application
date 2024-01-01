@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 
-public class AddActivity extends AppCompatActivity {
+public class CRUDActivity extends AppCompatActivity {
 
     EditText TramNumberID, TramNumber;
     Button add_button,update_button,delete_button;
@@ -91,13 +91,13 @@ public class AddActivity extends AppCompatActivity {
 //            db.updateData(id, tramNumber, tramNumberID);
 //        });
 //
-        add_button.setOnClickListener(view -> {
-            int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
-            int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
-            dbManager.insert_trams(tramID, tramN);
-
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.popBackStack();
-        });
+//        add_button.setOnClickListener(view -> {
+//            int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
+//            int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
+//            dbManager.insert_trams(tramID, tramN);
+//
+//            FragmentManager fragmentManager = getSupportFragmentManager();
+//            fragmentManager.popBackStack();
+//        });
     }
 }

@@ -32,7 +32,7 @@ public class StopsActivity extends AppCompatActivity {
 
         floatingAddButtonStops = findViewById(R.id.floatingAddButtonStops);
         floatingAddButtonStops.setOnClickListener(view -> {
-                    Intent intent = new Intent(StopsActivity.this, AddActivity.class);
+                    Intent intent = new Intent(StopsActivity.this, CRUDActivity.class);
                     intent.putExtra("FishText", "stops");
                     startActivity(intent);
                 });
