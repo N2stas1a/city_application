@@ -22,7 +22,7 @@
             android:name=".TramsList"
             android:exported="false" />
         <activity
-            android:name=".AddActivity"
+            android:name=".CRUDActivity"
             android:exported="false" />
         <activity
             android:name=".TimetableBus"

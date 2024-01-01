@@ -10,30 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.os.Bundle;
-import android.provider.BaseColumns;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.provider.BaseColumns;
-import android.widget.TextView;
-import android.content.Intent;
-import android.database.Cursor;
 
 import androidx.annotation.Nullable;
-import androidx.cursoradapter.widget.SimpleCursorAdapter;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.example.citypomsjava.R;
 import com.example.citypomsjava.databinding.FragmentAllRoutesBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -50,7 +29,7 @@ public class TramsList extends AppCompatActivity {
 
         floatingAddButton = this.findViewById(R.id.floatingAddButton);
         floatingAddButton.setOnClickListener(view -> {
-            Intent intent = new Intent(TramsList.this, AddActivity.class);
+            Intent intent = new Intent(TramsList.this, CRUDActivity.class);
             intent.putExtra("FishText", "trams");
             startActivityForResult(intent, 1);
         });

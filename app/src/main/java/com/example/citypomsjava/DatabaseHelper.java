@@ -148,9 +148,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     void updateData(String row_id, int tramNumber, String tramNumberID) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-        String tramNumberIdText = tramNumberID.getText().toString();
         cv.put(TRAM_NUMBER, tramNumber);
-        cv.put(_TRAM_ID, tramNumberIdText);
+        cv.put(_TRAM_ID, tramNumberID);
         long result = db.update(TABLE_NAME_TRAMS, cv, "_id=?", new String[]{row_id});
         Context context = null;
         if (result == -1) {
@@ -163,7 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.update(TABLE_NAME_TRAMS, "_id=?", new String[]{row_id});
+        long result = db.delete(TABLE_NAME_TRAMS, "_id=?", new String[]{row_id});
         Context context = null;
         if (result == -1) {
             Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT).show();

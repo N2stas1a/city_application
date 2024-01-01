@@ -29,9 +29,27 @@ public class UpdateActivity extends AppCompatActivity {
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DatabaseHelper myDB = new DatabaseHelper(UpdateActivity.this);
-                myDB.deleteOneRow(id);
-                finish();
+                confirmDialog();
+            }
+
+            private void confirmDialog() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateActivity.this);
+                builder.setTitle("Delete " + TramNumberID.getText().toString() + " ?");
+                builder.setMessage("Are you sure you want to delete " + TramNumberID.getText().toString() + " ?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DatabaseHelper myDB = new DatabaseHelper(UpdateActivity.this);
+                        myDB.deleteOneRow(id);
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
             }
         });
 
@@ -41,17 +59,5 @@ public class UpdateActivity extends AppCompatActivity {
             String tramNumberID = TramNumberID.getText().toString().trim();
             db.updateData(id, tramNumber, tramNumberID);
         });
-
-
-        void confirmDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete " + TramNumberID + " ?");
-        builder.setMessage("Are you sure you want to delete " + TramNumberID + " ?");
-        builder.setPositiveButton("Yes", (dialogInterface, i) -> {
-            DatabaseHelper myDB = new DatabaseHelper(UpdateActivity.this);
-            myDB.deleteOneRow(id);
-            finish();
-        });
-        builder.show();
     }
 }

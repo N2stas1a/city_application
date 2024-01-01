@@ -1,10 +1,6 @@
 package com.example.citypomsjava;
 
-import com.example.citypomsjava.AddActivity;
-import com.example.citypomsjava.DBManager;
-import com.example.citypomsjava.DatabaseHelper;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cursoradapter.widget.SimpleCursorAdapter;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 import android.content.Intent;
@@ -36,7 +32,7 @@ public class StopsActivity extends AppCompatActivity {
 
         floatingAddButtonStops = findViewById(R.id.floatingAddButtonStops);
         floatingAddButtonStops.setOnClickListener(view -> {
-                    Intent intent = new Intent(StopsActivity.this, AddActivity.class);
+                    Intent intent = new Intent(StopsActivity.this, CRUDActivity.class);
                     intent.putExtra("FishText", "stops");
                     startActivity(intent);
                 });

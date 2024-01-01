@@ -1,35 +1,23 @@
 package com.example.citypomsjava;
 
-import static androidx.core.app.ActivityCompat.recreate;
-
-import com.example.citypomsjava.DBManager;
-import com.example.citypomsjava.DatabaseHelper;
-import androidx.fragment.app.FragmentManager;
-import android.app.Activity;
 import android.os.Bundle;
-import android.provider.BaseColumns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.provider.BaseColumns;
 import android.widget.TextView;
 import android.content.Intent;
 import android.database.Cursor;
 
 import androidx.annotation.Nullable;
 import androidx.cursoradapter.widget.SimpleCursorAdapter;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.citypomsjava.R;
 import com.example.citypomsjava.databinding.FragmentAllRoutesBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -52,7 +40,7 @@ public class AllRouteFragment extends Fragment {
         floatingAddButton = root.findViewById(R.id.floatingAddButton);
 
         floatingAddButton.setOnClickListener(view -> {
-            Intent intent = new Intent(requireContext(), AddActivity.class);
+            Intent intent = new Intent(requireContext(), CRUDActivity.class);
             intent.putExtra("FishText", "trams");
             getActivity().startActivityForResult(intent, 1);
         });
@@ -118,7 +106,7 @@ public class AllRouteFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == AddActivity.RESULT_OK) {
+        if (requestCode == 1 && resultCode == CRUDActivity.RESULT_OK) {
             updateTramsList();
         }
     }
