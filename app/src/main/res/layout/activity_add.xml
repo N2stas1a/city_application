@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".CRUDActivity"
     android:padding="30dp">
@@ -11,6 +12,7 @@
     <EditText
         android:id="@+id/TramNumber"
         android:layout_width="match_parent"
+        android:textColor="@color/grey"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:ems="10"
@@ -23,6 +25,7 @@
     <EditText
         android:id="@+id/TramNumberID"
         android:layout_width="match_parent"
+        android:textColor="@color/grey"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:ems="10"
@@ -84,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:text="@string/tram_id_string"
+            android:text="@string/adding_tram"
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/white"/>
