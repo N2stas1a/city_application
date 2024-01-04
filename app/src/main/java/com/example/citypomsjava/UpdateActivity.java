@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 public class UpdateActivity extends AppCompatActivity {
 
-    EditText TramNumberID, TramNumber;
+    EditText RecordName, RecordID;
     Button update_button, delete_button;
 
     String id, tramN, tramNId;
@@ -21,10 +21,17 @@ public class UpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
 
-        TramNumberID = findViewById(R.id.name_input2);
-        TramNumber = findViewById(R.id.id_input2);
+        int selected_record_id = getIntent().getIntExtra("id", -1);
+        String selected_record_title = getIntent().getStringExtra("title");
+
+        RecordName = findViewById(R.id.name_input2);
+        RecordID = findViewById(R.id.id_input2);
+        String selected_record_id_string = String.valueOf(selected_record_id);
         update_button = findViewById(R.id.update_button);
         delete_button = findViewById(R.id.delete_button);
+
+        RecordName.setText(selected_record_title);
+        RecordID.setText(selected_record_id_string);
 
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,8 +41,8 @@ public class UpdateActivity extends AppCompatActivity {
 
             private void confirmDialog() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(UpdateActivity.this);
-                builder.setTitle("Delete " + TramNumberID.getText().toString() + " ?");
-                builder.setMessage("Are you sure you want to delete " + TramNumberID.getText().toString() + " ?");
+                builder.setTitle("Delete " + RecordName.getText().toString() + " ?");
+                builder.setMessage("Are you sure you want to delete " + RecordName.getText().toString() + " ?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -55,8 +62,8 @@ public class UpdateActivity extends AppCompatActivity {
 
         update_button.setOnClickListener(view -> {
             DatabaseHelper db = new DatabaseHelper(UpdateActivity.this);
-            int tramNumber = Integer.parseInt(TramNumber.getText().toString().trim());
-            String tramNumberID = TramNumberID.getText().toString().trim();
+            int tramNumber = Integer.parseInt(RecordName.getText().toString().trim());
+            String tramNumberID = RecordID.getText().toString().trim();
             db.updateData(id, tramNumber, tramNumberID);
         });
     }
