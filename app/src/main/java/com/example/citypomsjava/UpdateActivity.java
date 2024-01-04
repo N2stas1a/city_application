@@ -39,33 +39,6 @@ public class UpdateActivity extends AppCompatActivity {
         dbManager = new DBManager(this);
         dbManager.open();
 
-        delete_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                confirmDialog();
-            }
-
-            private void confirmDialog() {
-                AlertDialog.Builder builder = new AlertDialog.Builder(UpdateActivity.this);
-                builder.setTitle("Delete " + RecordName.getText().toString() + " ?");
-                builder.setMessage("Are you sure you want to delete " + RecordName.getText().toString() + " ?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        DatabaseHelper myDB = new DatabaseHelper(UpdateActivity.this);
-                        myDB.deleteOneRow(id);
-                        finish();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                    }
-                });
-            }
-        });
-
         update_button.setOnClickListener(view -> {
             int tramNumberID = Integer.parseInt(RecordID.getText().toString().trim());
             int tramNumber = Integer.parseInt(RecordName.getText().toString().trim());
@@ -75,6 +48,30 @@ public class UpdateActivity extends AppCompatActivity {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.popBackStack();
             finish();
+        });
+
+        delete_button.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(UpdateActivity.this);
+            builder.setTitle("Delete " + RecordName.getText().toString() + " ?");
+            builder.setMessage("Are you sure you want to delete " + RecordName.getText().toString() + " ?");
+            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dbManager.delete(selected_record_id);
+                    finish();
+                }
+            });
+            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.popBackStack();
+            //finish();
         });
     }
 }
