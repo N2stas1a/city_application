@@ -91,13 +91,13 @@ public class CRUDActivity extends AppCompatActivity {
 //            db.updateData(id, tramNumber, tramNumberID);
 //        });
 //
-//        add_button.setOnClickListener(view -> {
-//            int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
-//            int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
-//            dbManager.insert_trams(tramID, tramN);
-//
-//            FragmentManager fragmentManager = getSupportFragmentManager();
-//            fragmentManager.popBackStack();
-//        });
+        add_button.setOnClickListener(view -> {
+            int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
+            int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
+            dbManager.insert_trams(tramID, tramN);
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.popBackStack();
+        });
     }
 }
