@@ -1,3 +1,5 @@
+/*
+
 package com.example.citypomsjava;
 
 import androidx.lifecycle.LiveData;
@@ -17,3 +19,5 @@ public class AllRouteViewModel extends ViewModel {
         return mText;
     }
 }
+
+ */

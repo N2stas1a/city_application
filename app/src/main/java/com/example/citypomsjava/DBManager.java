@@ -119,6 +119,7 @@ public class DBManager {
         database.execSQL("DELETE FROM " + DatabaseHelper.TABLE_NAME_BUS_TIMETABLE);
     }
     public void populate(){
+        //populate Trams info
         int i = 0;
         int[] tramsArray = {24, 50, 11};
         for(i = 1; i<4; i++) { insert_trams(i, tramsArray[i-1]); }
@@ -146,17 +147,6 @@ public class DBManager {
         insert_routes(19, 3, 7, "Kabel");
         insert_routes(20,3, 3, "Nowosadecka");
 
-        int[] busesArray = {111, 502, 112};
-        for(i = 1; i<4; i++) { insert_buses(i, busesArray[i-1]); }
-        String[] Busstops = {"Vorzal","Dworcow","Nowosadecka","Piaski","Daun","Biezanov","Kabel","Dvorcowa","Plaszow","Lipska","Gromadzka" };
-        for(i = 1; i<12; i++) { insert_stops_bus(i, Busstops[i-1]); }
-        insert_routes_bus(22, 3, 1, "Vorzal");
-        insert_routes_bus(23, 3, 2, "Dworcow");
-        insert_routes_bus(24, 3, 3, "Nowosadecka");
-        insert_routes_bus(25, 3, 4, "Piaski");
-        insert_routes_bus(26, 3, 5, "Daun");
-        insert_routes_bus(27, 3, 6, "Biezanov");
-
         insert_timetable(1, 1,1, "4:37");
         insert_timetable(2, 1,1, "4:39");
         insert_timetable(3, 1,1, "4:40");
@@ -167,6 +157,20 @@ public class DBManager {
         insert_timetable(8, 2,1, "4:59");
         insert_timetable(9, 2,1, "4:58");
         insert_timetable(10, 2,1, "4:57");
+
+        //populate Buses info
+        int[] busesArray = {111, 502, 112};
+        for(i = 1; i<4; i++) { insert_buses(i, busesArray[i-1]); }
+        String[] Busstops = {"Vorzal","Dworcow","Nowosadecka","Piaski","Daun","Biezanov","Kabel","Dvorcowa","Plaszow","Lipska","Gromadzka" };
+        for(i = 1; i<12; i++) { insert_stops_bus(i, Busstops[i-1]); }
+        insert_routes_bus(1, 1, 1, "Vorzal");
+        insert_routes_bus(2, 1, 2, "Dworcow");
+        insert_routes_bus(3, 2, 3, "Nowosadecka");
+        insert_routes_bus(4, 2, 4, "Piaski");
+        insert_routes_bus(5, 3, 5, "Daun");
+        insert_routes_bus(6, 3, 6, "Biezanov");
+
+
     }
 
     public Cursor fetch_trams() {

@@ -1,3 +1,4 @@
+/*
 package com.example.citypomsjava;
 
 import android.os.Bundle;
@@ -110,7 +111,7 @@ public class AllRouteFragment extends Fragment {
             updateTramsList();
         }
     }
-    
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -118,3 +119,4 @@ public class AllRouteFragment extends Fragment {
         binding = null;
     }
 }
+*/

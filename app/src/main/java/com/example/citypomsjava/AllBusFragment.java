@@ -1,3 +1,4 @@
+/*
 package com.example.citypomsjava;
 
 import com.example.citypomsjava.DBManager;
@@ -60,7 +61,7 @@ public class AllBusFragment extends Fragment {
                 0
         );
         */
-
+/*
         Cursor cursor = dbManager.fetch_buses();
 
         final String[] from = new String[] {"_id", DatabaseHelper.BUS_NUMBER};
@@ -109,3 +110,5 @@ public class AllBusFragment extends Fragment {
         binding = null;
     }
 }
+
+ */

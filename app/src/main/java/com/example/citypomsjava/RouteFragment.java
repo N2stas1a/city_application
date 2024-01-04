@@ -43,17 +43,14 @@ public class RouteFragment extends Fragment {
 //                        }
 //                    }
 //                });
-                if (busCard != null) {
+
+            if (busCard != null) {
                     busCard.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            if (getActivity() != null) {
-                                AllBusFragment AllBusFragment = new AllBusFragment();
-                                getParentFragmentManager().beginTransaction()
-                                        .replace(R.id.frame_layout, AllBusFragment)
-                                        .addToBackStack(null)
-                                        .commit();
-                            }
+                            Intent transition_to_buses = new Intent(requireContext(), BusActivity.class);
+                            startActivity(transition_to_buses);
+
                         }
                     });
                 }
