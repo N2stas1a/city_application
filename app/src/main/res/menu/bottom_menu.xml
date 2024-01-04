@@ -10,7 +10,7 @@
         android:icon="@drawable/baseline_space_dashboard_24"/>
     <item
         android:id="@+id/info"
-        android:title="Info"
+        android:title="Reset DB"
         android:icon="@drawable/baseline_info_24"/>
     <item
         android:id="@+id/route"

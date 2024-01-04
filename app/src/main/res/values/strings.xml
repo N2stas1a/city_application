@@ -4,7 +4,9 @@
     <string name="tramN">50</string>
     <string name="tramN2">24</string>
     <string name="tram">tram</string>
+    <string name="editing">Редактирование записи</string>
     <string name="longClick">долгое нажатие для редактирования</string>
+    <string name="adding_tram">Добавление новой записи</string>
     <string name="bus">bus</string>
     <string name="subway">subway</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
