@@ -11,21 +11,25 @@
 
     <EditText
         android:id="@+id/id_input2"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
+        android:layout_marginStart="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:ems="10"
         android:hint="ID"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/grey"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name_input2"
-        android:layout_width="match_parent"
+        android:layout_width="180dp"
+        android:layout_marginStart="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
+        android:textColor="@color/grey"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
@@ -33,6 +37,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:text="@string/ID"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="250dp"
+        android:ems="10"
+        android:text="@string/Name"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button

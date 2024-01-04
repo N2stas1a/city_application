@@ -12,6 +12,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tram_number">replace with tram number</string>
     <string name="tram_id_string">replace me</string>
+    <string name="ID">ID</string>
+    <string name="Name">Имя</string>
 
     <string name="Minsk">Минск</string>
     <string name="MinskDesc">Минск - один из старейших городов Европы.

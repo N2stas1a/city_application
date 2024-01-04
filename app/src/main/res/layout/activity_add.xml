@@ -12,6 +12,7 @@
     <EditText
         android:id="@+id/TramNumber"
         android:layout_width="match_parent"
+        android:textColor="@color/grey"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:ems="10"
@@ -24,6 +25,7 @@
     <EditText
         android:id="@+id/TramNumberID"
         android:layout_width="match_parent"
+        android:textColor="@color/grey"
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:ems="10"

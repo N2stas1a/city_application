@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class UpdateActivity extends AppCompatActivity {
 
     EditText RecordName, RecordID;
+    private DBManager dbManager;
     Button update_button, delete_button;
 
     String id, tramN, tramNId;
@@ -32,6 +34,9 @@ public class UpdateActivity extends AppCompatActivity {
 
         RecordName.setText(selected_record_title);
         RecordID.setText(selected_record_id_string);
+
+        dbManager = new DBManager(this);
+        dbManager.open();
 
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +66,10 @@ public class UpdateActivity extends AppCompatActivity {
         });
 
         update_button.setOnClickListener(view -> {
-            DatabaseHelper db = new DatabaseHelper(UpdateActivity.this);
+            int tramNumberID = Integer.parseInt(RecordID.getText().toString().trim());
             int tramNumber = Integer.parseInt(RecordName.getText().toString().trim());
-            String tramNumberID = RecordID.getText().toString().trim();
-            db.updateData(id, tramNumber, tramNumberID);
+            dbManager.update(tramNumberID, tramNumber);
+            Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
         });
     }
 }
