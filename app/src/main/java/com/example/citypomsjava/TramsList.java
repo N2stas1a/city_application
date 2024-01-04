@@ -75,7 +75,7 @@ public class TramsList extends AppCompatActivity {
                 modify_intent.putExtra("id", tramId);
                 modify_intent.putExtra("title", title);
 
-                startActivity(modify_intent);
+                startActivityForResult(modify_intent, 1);
                 return true;
             }
         });

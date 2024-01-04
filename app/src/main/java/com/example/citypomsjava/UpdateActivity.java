@@ -2,6 +2,7 @@ package com.example.citypomsjava;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -70,6 +71,10 @@ public class UpdateActivity extends AppCompatActivity {
             int tramNumber = Integer.parseInt(RecordName.getText().toString().trim());
             dbManager.update(tramNumberID, tramNumber);
             Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.popBackStack();
+            finish();
         });
     }
 }

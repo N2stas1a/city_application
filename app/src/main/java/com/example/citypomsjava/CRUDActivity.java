@@ -47,8 +47,8 @@ public class CRUDActivity extends AppCompatActivity {
             Object context;
             View listItemView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_item, parent, false);
 
-            Button deleteButton = listItemView.findViewById(R.id.delete_button);
-            Button updateButton = listItemView.findViewById(R.id.update_button);
+            //Button deleteButton = listItemView.findViewById(R.id.delete_button);
+            //Button updateButton = listItemView.findViewById(R.id.update_button);
             return listItemView;
         }
     }
@@ -98,6 +98,7 @@ public class CRUDActivity extends AppCompatActivity {
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.popBackStack();
+            finish();
         });
     }
 }
