@@ -21,11 +21,6 @@ import java.util.ArrayList;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -35,37 +30,10 @@ public class HomeFragment extends Fragment {
     ArrayList<ListData> dataArrayList = new ArrayList<>();
     ListData listData;
 
-    // Remove the binding field
-    // ActivityMainBinding binding;
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public HomeFragment() {
+       public HomeFragment() {
         // Required empty public constructor
     }
 
-    public static HomeFragment newInstance(String param1, String param2) {
-        HomeFragment fragment = new HomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // Remove the following line as it leads to a null binding
-        // requireActivity().setContentView(binding.getRoot());
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-        // Remove the initListView and FragmentTransaction here
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

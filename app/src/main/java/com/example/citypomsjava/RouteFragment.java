@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 public class RouteFragment extends Fragment {
     CardView tramCard;
     CardView busCard;
-    //CardView subwayCard;
 
 
     @Override
@@ -30,19 +29,6 @@ public class RouteFragment extends Fragment {
 
                 }
             });
-//            if (subwayCard != null) {
-//                subwayCard.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        if (getActivity() != null) {
-//                            AllSubwayFragment AllSubwayFragment = new AllSubwayFragment();
-//                            getParentFragmentManager().beginTransaction()
-//                                    .replace(R.id.frame_layout, AllSubwayFragment)
-//                                    .addToBackStack(null)
-//                                    .commit();
-//                        }
-//                    }
-//                });
 
             if (busCard != null) {
                     busCard.setOnClickListener(new View.OnClickListener() {

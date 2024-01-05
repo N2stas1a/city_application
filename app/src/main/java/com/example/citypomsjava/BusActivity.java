@@ -20,20 +20,11 @@ public class BusActivity extends AppCompatActivity {
     //  private ListView listView;
     private SimpleCursorAdapter adapter;
     private FragmentAllRoutesBinding binding;
-    private FloatingActionButton floatingAddButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bus);
-/*
-        floatingAddButton = this.findViewById(R.id.floatingAddButton);
-        floatingAddButton.setOnClickListener(view -> {
-            Intent intent = new Intent(BusActivity.this, CRUDActivity.class);
-            intent.putExtra("FishText", "trams");
-            startActivityForResult(intent, 1);
-        });
-
- */
 
         dbManager = new DBManager(BusActivity.this);
         dbManager.open();

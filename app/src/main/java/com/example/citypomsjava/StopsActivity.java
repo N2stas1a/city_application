@@ -16,7 +16,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class StopsActivity extends AppCompatActivity {
     private DBManager dbManager;
-    //  private ListView listView;
     private SimpleCursorAdapter adapter;
     private FragmentAllRoutesBinding binding;
     private FloatingActionButton floatingAddButtonStops;

@@ -19,9 +19,8 @@ import androidx.fragment.app.FragmentManager;
 public class CRUDActivity extends AppCompatActivity {
 
     EditText TramNumberID, TramNumber;
-    Button add_button,update_button,delete_button;
+    Button add_button;
 
-    String id;
     private DBManager dbManager;
 
     public class CRUDButtonAdapters extends BaseAdapter {
@@ -46,9 +45,6 @@ public class CRUDActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             Object context;
             View listItemView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.list_item, parent, false);
-
-            //Button deleteButton = listItemView.findViewById(R.id.delete_button);
-            //Button updateButton = listItemView.findViewById(R.id.update_button);
             return listItemView;
         }
     }
@@ -59,38 +55,10 @@ public class CRUDActivity extends AppCompatActivity {
         TramNumberID = findViewById(R.id.TramNumberID);
         TramNumber = findViewById(R.id.TramNumber);
         add_button = findViewById(R.id.add_button);
-//        update_button = findViewById(R.id.update_button);
-//        delete_button = findViewById(R.id.delete_button);
         dbManager = new DBManager(this);
         dbManager.open();
 
-//        delete_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                confirmDialog();
-//            }
-//            private void confirmDialog() {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(CRUDActivity.this);
-//                builder.setTitle("Delete " + TramNumberID.getText().toString() + " ?");
-//                builder.setMessage("Are you sure you want to delete " + TramNumberID.getText().toString() + " ?");
-//                builder.setPositiveButton("Yes", (dialogInterface, i) -> {
-//                    DatabaseHelper myDB = new DatabaseHelper(CRUDActivity.this);
-//                    myDB.deleteOneRow(id);
-//                    finish();
-//                });
-//                builder.setNegativeButton("No", (dialogInterface, i) -> {
-//                    builder.show();
-//                });
-//            }
-//        });
 
-//        update_button.setOnClickListener(view -> {
-//            DatabaseHelper db = new DatabaseHelper(CRUDActivity.this);
-//            int tramNumber = Integer.parseInt(TramNumber.getText().toString().trim());
-//            String tramNumberID = TramNumberID.getText().toString().trim();
-//            db.updateData(id, tramNumber, tramNumberID);
-//        });
-//
         add_button.setOnClickListener(view -> {
             int tramN = Integer.parseInt(TramNumber.getText().toString().trim());
             int tramID = Integer.parseInt(TramNumberID.getText().toString().trim());
